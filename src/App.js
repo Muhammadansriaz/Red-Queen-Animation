@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 function App() {
 
   var playbackrateRQ = 1;
-	var playbackrateBG = 0;
+  var playbackrateBG = 0;
 
   const sceneryFrames = [
     { transform: 'translateX(100%)' },
@@ -28,74 +28,74 @@ function App() {
   });
 
   const background2Movement = useWebAnimations({
-    keyframes:sceneryFrames,
-    animationOptions:sceneryTimingBackground,
+    keyframes: sceneryFrames,
+    animationOptions: sceneryTimingBackground,
   })
 
   const foreground1Movement = useWebAnimations({
     keyframes: sceneryFrames,
-    animationOptions:sceneryTimingForeground
+    animationOptions: sceneryTimingForeground
   })
 
   const foreground2Movement = useWebAnimations({
     keyframes: sceneryFrames,
-    animationOptions:sceneryTimingForeground
+    animationOptions: sceneryTimingForeground
   })
 
   const spriteFrames = [
-		{ transform: "translateY(0)" },
-		{ transform: "translateY(-100%)" },
-	];
+    { transform: "translateY(0)" },
+    { transform: "translateY(-100%)" },
+  ];
 
-	const spirteTiming = {
-		easing: "steps(7, end)",
-		direction: "reverse",
-		duration: 600,
-		playbackRate: playbackrateRQ,
-		iterations: Infinity,
-	};
-	const redQueen_alice = useWebAnimations({
-		keyframes: spriteFrames,
-		animationOptions: spirteTiming,
-	});
-//------------------------------------------
+  const spirteTiming = {
+    easing: "steps(7, end)",
+    direction: "reverse",
+    duration: 600,
+    playbackRate: playbackrateRQ,
+    iterations: Infinity,
+  };
+  const redQueen_alice = useWebAnimations({
+    keyframes: spriteFrames,
+    animationOptions: spirteTiming,
+  });
+  //------------------------------------------
   const adjustBackgroundPlayback = () => {
-		if (playbackrateRQ < 0.8) {
-			playbackrateBG = (playbackrateRQ / 2) * -1;
-		} else if (playbackrateRQ > 1.2) {
-			playbackrateBG = playbackrateRQ / 2;
-		} else {
-			playbackrateBG = 0;
-		}
-		foreground1Movement.getAnimation().playbackRate = playbackrateBG;
-		foreground2Movement.getAnimation().playbackRate = playbackrateBG;
-		background1Movement.getAnimation().playbackRate = playbackrateBG;
-		background2Movement.getAnimation().playbackRate = playbackrateBG;
-	};
+    if (playbackrateRQ < 0.8) {
+      playbackrateBG = (playbackrateRQ / 2) * -1;
+    } else if (playbackrateRQ > 1.2) {
+      playbackrateBG = playbackrateRQ / 2;
+    } else {
+      playbackrateBG = 0;
+    }
+    foreground1Movement.getAnimation().playbackRate = playbackrateBG;
+    foreground2Movement.getAnimation().playbackRate = playbackrateBG;
+    background1Movement.getAnimation().playbackRate = playbackrateBG;
+    background2Movement.getAnimation().playbackRate = playbackrateBG;
+  };
 
 
   useEffect(() => {
-		const fganimation = foreground1Movement.getAnimation();
-		fganimation.currentTime = fganimation.effect.getTiming().duration / 2;
+    const fganimation = foreground1Movement.getAnimation();
+    fganimation.currentTime = fganimation.effect.getTiming().duration / 2;
 
-		const bganimation = background1Movement.getAnimation();
-		bganimation.currentTime = bganimation.effect.getTiming().duration / 2;
+    const bganimation = background1Movement.getAnimation();
+    bganimation.currentTime = bganimation.effect.getTiming().duration / 2;
 
-		setInterval(() => {
-		
-			if (playbackrateRQ > 0.4) {
-				playbackrateRQ *= 0.9;
-				redQueen_alice.getAnimation().playbackRate = playbackrateRQ;
-			}
-			adjustBackgroundPlayback();
-		}, 3000);
+    setInterval(() => {
 
-		document.addEventListener("click", () => {
-			playbackrateRQ *= 1.1;
-			redQueen_alice.getAnimation().playbackRate = playbackrateRQ;
-			adjustBackgroundPlayback();
-		});
-	});
+      if (playbackrateRQ > 0.4) {
+        playbackrateRQ *= 0.9;
+        redQueen_alice.getAnimation().playbackRate = playbackrateRQ;
+      }
+      adjustBackgroundPlayback();
+    }, 3000);
+
+    document.addEventListener("click", () => {
+      playbackrateRQ *= 1.1;
+      redQueen_alice.getAnimation().playbackRate = playbackrateRQ;
+      adjustBackgroundPlayback();
+    });
+  });
 
 
 
@@ -114,7 +114,7 @@ function App() {
             />
           </div>
         </div>
-
+        <h1>hhhh</h1>
         <div className="scenery" id="foreground1" ref={foreground1Movement.ref} >
           <img
             id="palm3"
