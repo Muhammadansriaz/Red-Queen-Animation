@@ -114,7 +114,7 @@ function App() {
             />
           </div>
         </div>
-        <h1></h1>
+        <h1>he</h1>
         <div className="scenery" id="foreground1" ref={foreground1Movement.ref} >
           <img
             id="palm3"
